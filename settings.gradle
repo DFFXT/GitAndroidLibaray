@@ -1,0 +1,3 @@
+include ':recyclerViewTopTixed'
+include ':app'
+rootProject.name = "GitAndroidLibaray"

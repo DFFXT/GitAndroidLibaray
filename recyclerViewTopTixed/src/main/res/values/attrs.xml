@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TopFixedRecyclerViewWrapper">
+        <attr name="wrapper_layout" format="reference"/>
+        <attr name="wrapper_recyclerviewId" format="reference"/>
+        <attr name="wrapper_topSwitcherId" format="reference"/>
+    </declare-styleable>
+</resources>
