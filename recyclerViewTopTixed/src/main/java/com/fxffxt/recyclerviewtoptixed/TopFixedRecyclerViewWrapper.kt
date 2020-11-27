@@ -15,15 +15,15 @@ import androidx.recyclerview.widget.RecyclerView
  * 只需adapter实现IAdapter接口即可
  * adapter的数据源一般要去掉第一个fixedItem数据
  */
-class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
+open class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
     lateinit var recyclerView: RecyclerView
         private set
     lateinit var topSwitcher: ViewGroup
         private set
-    private lateinit var current: View
-    private lateinit var next: View
+    protected lateinit var current: View
+    protected lateinit var next: View
 
     init {
         orientation = VERTICAL
@@ -59,7 +59,7 @@ class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
     }
 
 
-    private fun fixTopPeriodPhase(first: Int, firstView: View) {
+    protected open fun fixTopPeriodPhase(first: Int, firstView: View) {
         val adapter = (recyclerView.adapter as? IAdapter) ?: return
         if (adapter.isFixedItem(first)) {
             next.translationY = (topSwitcher.height + firstView.top).toFloat()

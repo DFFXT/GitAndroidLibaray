@@ -5,4 +5,9 @@
         <attr name="wrapper_recyclerviewId" format="reference"/>
         <attr name="wrapper_topSwitcherId" format="reference"/>
     </declare-styleable>
+    <declare-styleable name="TopFixedRecyclerViewWrapper2">
+        <attr name="wrapper2_layout" format="reference"/>
+        <attr name="wrapper2_recyclerviewId" format="reference"/>
+        <attr name="wrapper2_topSwitcherId" format="reference"/>
+    </declare-styleable>
 </resources>
