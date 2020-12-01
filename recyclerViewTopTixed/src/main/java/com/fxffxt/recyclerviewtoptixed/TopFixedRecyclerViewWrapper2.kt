@@ -46,12 +46,15 @@ open class TopFixedRecyclerViewWrapper2 @JvmOverloads constructor(
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val child = recyclerView.getChildAt(0)
-                topSwitcher.visibility = if (child == null) View.INVISIBLE else View.VISIBLE
-                val position = recyclerView.getChildAdapterPosition(child)
-                fixTopPeriodPhase(position)
+                refresh()
             }
         })
+    }
+    fun refresh(){
+        val child = recyclerView.getChildAt(0)
+        topSwitcher.visibility = if (child == null) View.INVISIBLE else View.VISIBLE
+        val position = recyclerView.getChildAdapterPosition(child)
+        fixTopPeriodPhase(position)
     }
 
 
@@ -85,7 +88,7 @@ open class TopFixedRecyclerViewWrapper2 @JvmOverloads constructor(
      * @param forceRefresh 强制重新生成fixedItem，一般在FixedItem的布局类型发生变化时才为true
      * 给adapter设置数据时调用
      */
-    fun refreshTop(viewType: Int, forceRefresh: Boolean) {
+    fun buildTop(viewType: Int, forceRefresh: Boolean) {
         if (!forceRefresh && topSwitcher.childCount == 1) return
         val adapter = recyclerView.adapter ?: return
         val viewHolder1 = adapter.createViewHolder(recyclerView, viewType)

@@ -46,6 +46,6 @@ class MainActivity : AppCompatActivity() {
         }
         layout.recyclerView.layoutManager = LinearLayoutManager(this)
         layout.recyclerView.adapter = adapter
-        layout.refreshTop(-1,false)
+        layout.buildTop(-1,false)
     }
 }
