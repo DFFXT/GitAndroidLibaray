@@ -98,19 +98,7 @@ open class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
         next = viewHolder2.itemView
         topSwitcher.addView(viewHolder1.itemView)
         topSwitcher.addView(viewHolder2.itemView)
-        if (topSwitcher.height <= 0) {
-            topSwitcher.viewTreeObserver.addOnPreDrawListener(object :
-                    ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw(): Boolean {
-                    topSwitcher.viewTreeObserver.removeOnPreDrawListener(this)
-                    viewHolder2.itemView.translationY = topSwitcher.height.toFloat()
-                    return false
-                }
-            })
-        } else {
-            viewHolder2.itemView.translationY = topSwitcher.height.toFloat()
-        }
-
+        viewHolder2.itemView.translationY = Float.MAX_VALUE
     }
 
 }
