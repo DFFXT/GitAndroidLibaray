@@ -1,3 +1,4 @@
+include ':dragHelper'
 include ':recyclerViewTopTixed'
 include ':app'
 rootProject.name = "GitAndroidLibaray"

@@ -8,13 +8,13 @@
 	  }
 
 	  dependencies {
-	        implementation 'com.github.DFFXT:GitAndroidLibaray:0.2'
+	        implementation 'com.github.DFFXT:GitAndroidLibaray:0.3'
 	  }
     
 #使用方法
     
     
-    val layout = findViewById<TopFixedRecyclerViewWrapper2>(R.id.topFixedRecyclerViewWrapper2)
+    val layout = findViewById<TopFixedRecyclerViewWrapper>(R.id.topFixedRecyclerViewWrapper)
         val adapter = object :RecyclerView.Adapter<RecyclerView.ViewHolder>(),IAdapter{
             //......
             override fun isFixedItem(position: Int): Boolean {

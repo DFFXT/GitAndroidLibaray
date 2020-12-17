@@ -6,12 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.fxffxt.recyclerviewtoptixed.TopFixedRecyclerViewWrapper2
-        android:id="@+id/topFixedRecyclerViewWrapper2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:wrapper2_recyclerviewId="@id/recyclerview"
-        app:wrapper2_layout="@layout/layout_top_fixed_reyclerview2"
-        app:wrapper2_topSwitcherId="@id/top_switcher"/>
+    <TextView
+        android:id="@+id/tv_inner"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:textSize="20sp"
+        android:text="inner类型"
+        android:background="#990000"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+        android:id="@+id/tv_outer"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:textSize="20sp"
+        android:text="outer类型"
+        android:background="#990000"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/tv_inner"
+        app:layout_constraintTop_toTopOf="@id/tv_inner"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
