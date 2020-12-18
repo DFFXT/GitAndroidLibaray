@@ -13,12 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
  * 两种方式顶部常驻
  * 顶部item常驻的RecyclerView容器
  * 只需adapter实现IAdapter接口即可
- * 如果自定义layout 类似于  R.layout.layout_top_fixed_reyclerview_outer：
+ * 类型1：如果自定义layout 类似于  R.layout.layout_top_fixed_reyclerview_outer：
  *      adapter的数据源一般要去掉第一个fixedItem数据
- *      bindFixedView(itemView: View, position: Int)
- * 如果自定义layout 类似于 R.layout.layout_top_fixed_reyclerview_inner：
- *      isFixedItem(position: Int) position需要+1
- *      bindFixedView(itemView: View, position: Int) position需要+1
+ * 类型2（默认）：如果自定义layout 类似于 R.layout.layout_top_fixed_reyclerview_inner：
  *
  * 最终还是要视实现的效果而定
  */
@@ -40,7 +37,7 @@ open class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
 
     init {
         context.obtainStyledAttributes(attrs, R.styleable.TopFixedRecyclerViewWrapper).use {
-            val layout = it.getResourceId(R.styleable.TopFixedRecyclerViewWrapper_wrapper_layout, R.layout.layout_top_fixed_reyclerview_outer)
+            val layout = it.getResourceId(R.styleable.TopFixedRecyclerViewWrapper_wrapper_layout, R.layout.layout_top_fixed_reyclerview_inner)
             val rvId = it.getResourceId(R.styleable.TopFixedRecyclerViewWrapper_wrapper_recyclerviewId, R.id.recyclerview)
             val topSwitcherId = it.getResourceId(R.styleable.TopFixedRecyclerViewWrapper_wrapper_topSwitcherId, R.id.top_switcher)
             snap = it.getFloat(R.styleable.TopFixedRecyclerViewWrapper_wrapper_snap, snap)
