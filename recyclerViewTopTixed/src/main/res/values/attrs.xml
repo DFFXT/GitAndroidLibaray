@@ -6,5 +6,7 @@
         <attr name="wrapper_topSwitcherId" format="reference"/>
         <!--建议取值在[0,1]-->
         <attr name="wrapper_snap" format="float"/>
+        <!--数据源第一个数据是否是FixedItem，当悬浮在RecyclerView内部时为true（默认），当悬浮在RecyclerView外部时应当为false-->
+        <attr name="wrapper_fixedItemOver" format="boolean"/>
     </declare-styleable>
 </resources>

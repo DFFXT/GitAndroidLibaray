@@ -31,7 +31,12 @@ open class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
         private set
     protected lateinit var current: View
     protected lateinit var next: View
+
+    /**
+     * 当FixedItem的布局不一致时（不同FixedItem高度不一样），如果snap<1有可能导致闪烁
+     */
     var snap = 1f
+    private var fixedItemOver = true
 
     init {
         context.obtainStyledAttributes(attrs, R.styleable.TopFixedRecyclerViewWrapper).use {
@@ -39,6 +44,7 @@ open class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
             val rvId = it.getResourceId(R.styleable.TopFixedRecyclerViewWrapper_wrapper_recyclerviewId, R.id.recyclerview)
             val topSwitcherId = it.getResourceId(R.styleable.TopFixedRecyclerViewWrapper_wrapper_topSwitcherId, R.id.top_switcher)
             snap = it.getFloat(R.styleable.TopFixedRecyclerViewWrapper_wrapper_snap, snap)
+            fixedItemOver = it.getBoolean(R.styleable.TopFixedRecyclerViewWrapper_wrapper_fixedItemOver, fixedItemOver)
             inflate(context, layout, this)
             findViewById<RecyclerView>(rvId).let { rv ->
                 if (rv == null) {
@@ -66,13 +72,38 @@ open class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
         topSwitcher.children.forEach {
             it.visibility = if (child == null) View.INVISIBLE else View.VISIBLE
         }
-        val position = recyclerView.getChildAdapterPosition(child)
-        fixTopPeriodPhase(position, child)
+        if (fixedItemOver){
+            fixedItemOverRecyclerView()
+        }else{
+            fixedItemOutsideRecyclerView()
+        }
     }
 
 
-    protected open fun fixTopPeriodPhase(first: Int, firstView: View) {
+    protected open fun fixedItemOverRecyclerView() {
         val adapter = (recyclerView.adapter as? IAdapter) ?: return
+        for (i in 0 until recyclerView.childCount){
+            val child = recyclerView.getChildAt(i)
+            val index = recyclerView.getChildAdapterPosition(child)
+            if (index < 0 )continue
+            if (i == 0){
+                adapter.bindFixedView(current, index)
+                current.translationY = 0f
+                next.translationY = Float.MAX_VALUE
+            }else if (adapter.isFixedItem(index)){
+                if (child.top < current.height){
+                    adapter.bindFixedView(next, index)
+                    next.translationY = child.top.toFloat()
+                    current.translationY = -(current.height - next.translationY)*snap
+                }
+                break
+            }
+        }
+    }
+    protected open fun fixedItemOutsideRecyclerView() {
+        val adapter = (recyclerView.adapter as? IAdapter) ?: return
+        val firstView = recyclerView.getChildAt(0)?:return
+        val first = recyclerView.getChildAdapterPosition(firstView)
         if (adapter.isFixedItem(first)) {
             next.translationY = (topSwitcher.height + firstView.top).toFloat()
             adapter.bindFixedView(next, first)

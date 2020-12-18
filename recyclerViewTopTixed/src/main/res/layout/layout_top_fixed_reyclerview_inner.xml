@@ -14,5 +14,7 @@
         android:id="@+id/top_switcher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_height="100dp"/>
+        android:paddingBottom="10dp"
+        tools:layout_height="100dp"
+        android:clipChildren="false"/>
 </merge>

@@ -13,6 +13,7 @@
         app:wrapper_recyclerviewId="@id/recyclerview"
         app:wrapper_layout="@layout/layout_top_fixed_reyclerview_outer"
         app:wrapper_topSwitcherId="@id/top_switcher"
+        app:wrapper_fixedItemOver="false"
         app:wrapper_snap="0.2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

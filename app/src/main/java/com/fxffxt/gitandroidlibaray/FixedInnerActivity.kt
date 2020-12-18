@@ -30,19 +30,25 @@ class FixedInnerActivity : AppCompatActivity() {
                 val tv = holder.itemView as TextView
                 tv.text = data[position].text
                 tv.setBackgroundColor(data[position].background)
+                val lp = tv.layoutParams
+                lp.height = data[position].height
+                tv.layoutParams = lp
             }
 
             override fun getItemCount(): Int = data.size
             override fun isFixedItem(position: Int): Boolean {
-                val position = position +1
+                val position = position
                 return data[position] is FixedItem
             }
 
             override fun bindFixedView(itemView: View, position: Int) {
-                val position = position +1
+                val position = position
                 val item = data.findFixedItem(position)?:return
                 (itemView as TextView).text = item.text
                 itemView.setBackgroundColor(item.background)
+                val lp = itemView.layoutParams
+                lp.height = item.height
+                itemView.layoutParams = lp
             }
         }
         layout.recyclerView.layoutManager = LinearLayoutManager(this)

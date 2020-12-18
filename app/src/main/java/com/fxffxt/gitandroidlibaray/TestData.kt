@@ -9,18 +9,18 @@ object TestData {
         val random = Random(System.currentTimeMillis())
         repeat(100){
             if (it % 4 == 0){
-                res.add(FixedItem("index = $it", Color.RED))
+                res.add(FixedItem("index = $it", Color.WHITE,50))
             }else{
-                res.add(CommonItem("index = $it",random.nextInt()))
+                res.add(CommonItem("index = $it",random.nextInt(),100))
             }
         }
         return res
     }
 }
 
-open class BaseItem(val text:String,val background:Int)
-class CommonItem(text:String,background: Int):BaseItem(text,background)
-class FixedItem(text:String, background: Int):BaseItem(text,background)
+open class BaseItem(val text:String,val background:Int,val height: Int)
+class CommonItem(text:String,background: Int,height:Int):BaseItem(text,background,height)
+class FixedItem(text:String, background: Int,height:Int):BaseItem(text,background,height)
 //找到[0,position]位置的最后一个FixedItem
 fun List<BaseItem>.findFixedItem(position:Int):FixedItem?{
     if (position !in indices) return null
