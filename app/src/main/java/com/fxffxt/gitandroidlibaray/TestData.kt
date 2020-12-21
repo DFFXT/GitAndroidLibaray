@@ -4,10 +4,10 @@ import android.graphics.Color
 import kotlin.random.Random
 
 object TestData {
-    fun getData():ArrayList<BaseItem>{
+    fun getData(len:Int = 100):ArrayList<BaseItem>{
         val res = ArrayList<BaseItem>()
         val random = Random(System.currentTimeMillis())
-        repeat(100){
+        repeat(len){
             if (it % 4 == 0){
                 res.add(FixedItem("index = $it", Color.WHITE,50))
             }else{

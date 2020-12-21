@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fxffxt.recyclerviewtoptixed.IAdapter
 import com.fxffxt.recyclerviewtoptixed.TopFixedRecyclerViewWrapper
+import kotlin.random.Random
 
 class FixedInnerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fixed_inner)
         val layout = findViewById<TopFixedRecyclerViewWrapper>(R.id.topFixedRecyclerViewWrapper)
-        val data = TestData.getData()
+        var data = TestData.getData()
         val adapter = object :RecyclerView.Adapter<RecyclerView.ViewHolder>(),IAdapter{
             override fun onCreateViewHolder(
                 parent: ViewGroup,
@@ -54,5 +55,10 @@ class FixedInnerActivity : AppCompatActivity() {
         layout.recyclerView.layoutManager = LinearLayoutManager(this)
         layout.recyclerView.adapter = adapter
         layout.buildTop(-1,false)
+
+        findViewById<View>(R.id.tv_changeData).setOnClickListener {
+            data = TestData.getData(Random(System.currentTimeMillis()).nextInt(50,100))
+            layout.recyclerView.adapter?.notifyDataSetChanged()
+        }
     }
 }

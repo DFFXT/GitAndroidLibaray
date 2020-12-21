@@ -124,12 +124,15 @@ open class TopFixedRecyclerViewWrapper @JvmOverloads constructor(
      * 给adapter设置数据时调用
      */
     fun buildTop(viewType: Int, forceRefresh: Boolean) {
-        if (!forceRefresh && topSwitcher.childCount == 2) return
+        if (!forceRefresh && (::current.isInitialized || ::next.isInitialized)) return
         val adapter = recyclerView.adapter ?: return
         val viewHolder1 = adapter.createViewHolder(recyclerView, viewType)
         val viewHolder2 = adapter.createViewHolder(recyclerView, viewType)
         (adapter as IAdapter).bindFixedView(viewHolder1.itemView, 0)
-        topSwitcher.removeAllViews()
+        if (::current.isInitialized){
+            topSwitcher.removeView(current)
+            topSwitcher.removeView(next)
+        }
         current = viewHolder1.itemView
         next = viewHolder2.itemView
         topSwitcher.addView(viewHolder1.itemView)
