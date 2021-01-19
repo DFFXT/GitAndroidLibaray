@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#007700"
     tools:context=".MainActivity">
 
     <TextView
@@ -28,7 +29,21 @@
         android:background="#990000"
         android:textColor="@color/white"
         android:gravity="center"
+
         app:layout_constraintStart_toEndOf="@id/tv_inner"
         app:layout_constraintTop_toTopOf="@id/tv_inner"
+        app:layout_constraintEnd_toStartOf="@id/fragmentTest"/>
+    <TextView
+        android:id="@+id/fragmentTest"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:textSize="20sp"
+        android:text="fragment"
+        android:background="#990000"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/tv_outer"
+        app:layout_constraintTop_toTopOf="@id/tv_inner"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,4 +9,45 @@
         <!--数据源第一个数据是否是FixedItem，当悬浮在RecyclerView内部时为true（默认），当悬浮在RecyclerView外部时应当为false-->
         <attr name="wrapper_fixedItemOver" format="boolean"/>
     </declare-styleable>
+
+
+    <declare-styleable name="CustomShapeableImageView">
+
+        <!-- Corner size to be used in the ShapeAppearance. All corners default to this value -->
+        <attr format="dimension|fraction" name="civ_cornerSize"/>
+        <!-- Top left corner size to be used in the ShapeAppearance. -->
+        <attr format="dimension|fraction" name="civ_cornerSizeTopLeft"/>
+        <!-- Top right corner size to be used in the ShapeAppearance. -->
+        <attr format="dimension|fraction" name="civ_cornerSizeTopRight"/>
+        <!-- Bottom right corner size to be used in the ShapeAppearance. -->
+        <attr format="dimension|fraction" name="civ_cornerSizeBottomRight"/>
+        <!-- Bottom left corner size to be used in the ShapeAppearance. -->
+        <attr format="dimension|fraction" name="civ_cornerSizeBottomLeft"/>
+
+        <!-- Corner family to be used in the ShapeAppearance. All corners default to this value -->
+        <attr format="enum" name="civ_cornerFamily">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+        <!-- Top left corner family to be used in the ShapeAppearance. -->
+        <attr format="enum" name="civ_cornerFamilyTopLeft">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+        <!-- Top right corner family to be used in the ShapeAppearance. -->
+        <attr format="enum" name="civ_cornerFamilyTopRight">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+        <!-- Bottom right corner family to be used in the ShapeAppearance. -->
+        <attr format="enum" name="civ_cornerFamilyBottomRight">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+        <!-- Bottom left corner family to be used in the ShapeAppearance. -->
+        <attr format="enum" name="civ_cornerFamilyBottomLeft">
+            <enum name="rounded" value="0"/>
+            <enum name="cut" value="1"/>
+        </attr>
+    </declare-styleable>
 </resources>
