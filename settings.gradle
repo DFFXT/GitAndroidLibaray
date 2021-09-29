@@ -1,4 +1,4 @@
-include ':testl'
 include ':recyclerViewTopTixed'
 include ':app'
 rootProject.name = "GitAndroidLibaray"
+include ':test'
