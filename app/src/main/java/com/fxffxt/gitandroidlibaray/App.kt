@@ -1,15 +1,26 @@
 package com.fxffxt.gitandroidlibaray
 
 import android.app.Application
-import android.content.Context
+import com.example.activitycollection.base.ActivityInfo
+import com.example.activitycollection.base.ActivityStackCollection
+import com.example.activitycollection.bean.Module
 
-class App: Application() {
+/**
+ * @author feiqin
+ * @date 2021/10/19
+ * @description application
+ */
+class App : Application() {
     override fun onCreate() {
-        ctx = applicationContext
+        ctx = this
         super.onCreate()
+        registerActivityLifecycleCallbacks(object : ActivityStackCollection<Module>() {
+            override fun onPauseWithInfo(info: ActivityInfo<Module>) {
+            }
+        })
     }
-    companion object{
+    companion object {
         @JvmStatic
-        lateinit var ctx: Context
+        lateinit var ctx: Application
     }
 }

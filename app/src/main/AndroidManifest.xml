@@ -4,29 +4,64 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
-    <uses-permission-sdk-23 android:name="android.permission.DISABLE_KEYGUARD"/>
     <uses-permission-sdk-23 android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
 
     <application
         android:name=".App"
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:fullBackupOnly="true"
+        android:allowBackup="true"
         android:theme="@style/Theme.GitAndroidLibaray">
         <activity android:name=".MainActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".FixedInnerActivity"/>
+        <activity android:name=".FixedOuterActivity"/>
+        <activity android:name=".fragmenttest.DestActivity" />
+        <activity android:name=".fragmenttest.FirstActivity" />
+
+
+        <activity android:name="com.fxffxt.stat.CommonActivity" android:label="天天记单词">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FixedInnerActivity"/>
-        <activity android:name=".FixedOuterActivity"/>
-        <activity android:name=".fragmenttest.DestActivity" />
-        <activity android:name=".fragmenttest.FirstActivity" />
+        <activity android:name="com.fxffxt.stat.SingleTaskActivity"
+            android:taskAffinity=".m2"
+            android:label="生词本"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.fxffxt.stat.SingleTaskActivity1"
+            android:taskAffinity=".m1"
+            android:label="同步词汇"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.fxffxt.stat.DispatcherActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name="com.fxffxt.stat.SingleInstanceActivity"
+            android:launchMode="singleInstance"/>
+
     </application>
 
 </manifest>

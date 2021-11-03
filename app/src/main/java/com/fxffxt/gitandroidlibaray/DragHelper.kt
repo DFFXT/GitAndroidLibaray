@@ -15,11 +15,15 @@ import kotlin.math.min
 class DragHelper(private val target: View, var dragLimit: DragLimit = DragLimit()) {
     private val parent: ViewGroup
         get() = target.parent as ViewGroup
+
+    /**
+     * 绑定drag
+     */
     @SuppressLint("ClickableViewAccessibility")
     fun bindDrag(): DragHelper {
         val ctx = target.context
 
-        //Drag
+        // Drag
         var downX = 0f
         var downY = 0f
         var preX = 0f
@@ -40,18 +44,18 @@ class DragHelper(private val target: View, var dragLimit: DragLimit = DragLimit(
                 MotionEvent.ACTION_MOVE -> {
                     if (moved || abs(x - downX) > touchSlop || abs(y - downY) > touchSlop) {
 
-                        //限制超出屏幕部分 方法2也可行
+                        // 限制超出屏幕部分 方法2也可行
                         val leftX = max(0 - (target.x - dragLimit.paddingStart + x - preX), 0f)
                         val rightX = min(
-                                parent.width - (target.x + target.width + dragLimit.paddingEnd + x - preX),
-                                0f
+                            parent.width - (target.x + target.width + dragLimit.paddingEnd + x - preX),
+                            0f
                         )
                         val moreX = leftX + rightX
 
                         val topY = max(0 - (target.y - dragLimit.paddingTop + y - preY), 0f)
                         val bottomY = min(
-                                parent.height - (target.y + target.height + dragLimit.paddingBottom + y - preY),
-                                0f
+                            parent.height - (target.y + target.height + dragLimit.paddingBottom + y - preY),
+                            0f
                         )
                         val moreY = topY + bottomY
 
@@ -79,13 +83,18 @@ class DragHelper(private val target: View, var dragLimit: DragLimit = DragLimit(
         return this
     }
 
-    //限制拖拽对象在parent中的活动空间，可为负
+    // 限制拖拽对象在parent中的活动空间，可为负
     class DragLimit(var paddingStart: Int = 0, var paddingTop: Int = 0, var paddingEnd: Int = 0, var paddingBottom: Int = 0) {
+        /**
+         * 重载+操作符
+         */
         operator fun plus(dragLimit: DragLimit): DragLimit {
-            return DragLimit(paddingStart + dragLimit.paddingStart,
-                    paddingTop + dragLimit.paddingTop,
-                    paddingEnd + dragLimit.paddingEnd,
-                    paddingBottom + dragLimit.paddingBottom)
+            return DragLimit(
+                paddingStart + dragLimit.paddingStart,
+                paddingTop + dragLimit.paddingTop,
+                paddingEnd + dragLimit.paddingEnd,
+                paddingBottom + dragLimit.paddingBottom
+            )
         }
     }
 }
