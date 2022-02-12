@@ -2,7 +2,6 @@ package com.fxffxt.stat
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +18,7 @@ open class BaseStatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_stat)
         val adapter = object : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-                return object :RecyclerView.ViewHolder(LayoutInflater.from(this@BaseStatActivity).inflate(R.layout.item_test_tint,parent,false)){}
+                return object : RecyclerView.ViewHolder(LayoutInflater.from(this@BaseStatActivity).inflate(R.layout.item_test_tint, parent, false)) {}
             }
 
             override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layoutDescription="@xml/activity_stat_scene">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/btn_actCommon"
@@ -24,14 +23,20 @@
         app:layout_constraintStart_toEndOf="@id/btn_actCommon"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
+        android:text="111233333333333333333333323ssssssssd24234ss"
+        app:autoSizeMinTextSize="1dp"
+        app:autoSizeMaxTextSize="30dp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="1dp"
+        android:autoSizeMaxTextSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_actCommon"
-        tools:text="标题" />
+         />
 
     <TextView
         android:id="@+id/tv_info"
@@ -49,4 +54,25 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/tv_info"/>
 
+    <fragment
+        android:id="@+id/testFra"
+        android:name="com.fxffxt.stat.TestFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <com.fxffxt.recyclerviewtoptixed.oversizebackground.OverSizeView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:background="#f00"
+        app:osv_offsetEnd="50%p"
+        app:osv_offsetBottom="10dp"
+        android:elevation="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

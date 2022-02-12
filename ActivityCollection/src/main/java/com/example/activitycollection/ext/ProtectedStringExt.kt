@@ -13,3 +13,9 @@ fun String?.notNullOrEmpty(call: String.() -> Unit) {
         call(this)
     }
 }
+
+/**
+ * log
+ */
+fun log(tag: String, msg: String) {
+}

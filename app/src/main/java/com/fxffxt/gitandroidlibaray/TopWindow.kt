@@ -1,5 +1,6 @@
 package com.fxffxt.gitandroidlibaray
 
+import android.app.Application
 import android.content.Context
 import android.graphics.PixelFormat
 import android.graphics.Point
@@ -13,8 +14,8 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 
 object TopWindow {
-    private lateinit var ctx:Context
-    private val v by lazy {  LayoutInflater.from(ctx).inflate(R.layout.wm, null, false)}
+    private lateinit var ctx:Application
+    val v by lazy {  LayoutInflater.from(ctx).inflate(R.layout.wm, null, false)}
     private var lp = WindowManager.LayoutParams()
     private val wm by lazy {  ctx.getSystemService(Context.WINDOW_SERVICE) as WindowManager}
     private fun init (){
@@ -52,11 +53,11 @@ object TopWindow {
 
 
     fun edit(lifecycleOwner: LifecycleOwner){
-        ctx = lifecycleOwner as Context
+        ctx = (lifecycleOwner as Context).applicationContext as Application
         init()
         lifecycleOwner.lifecycle.addObserver(object :LifecycleEventObserver{
             override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-                if (event == Lifecycle.Event.ON_RESUME){
+                if (event == Lifecycle.Event.ON_RESUME) {
                     lp.flags = WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS //or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
                     wm.updateViewLayout(v, lp)
                 }else if (event == Lifecycle.Event.ON_PAUSE){

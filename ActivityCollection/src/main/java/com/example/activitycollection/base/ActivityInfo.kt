@@ -7,7 +7,7 @@ import java.io.Serializable
  * @date 2021/10/19
  * @description activity 基本信息
  */
-class ActivityInfo<T : Cloneable>(var hashCode: Int) : Serializable {
+class ActivityInfo<T : Cloneable>() : Serializable {
     var startTime: Long = -1
     var pauseTime: Long = -1
     var data: T? = null
@@ -16,14 +16,21 @@ class ActivityInfo<T : Cloneable>(var hashCode: Int) : Serializable {
      * 克隆对象
      */
     fun clone(): ActivityInfo<T> {
-        val info = ActivityInfo<T>(hashCode)
-        info.data = data
+        val info = ActivityInfo<T>()
+        info.data = data?.copy()
         info.startTime = -1
         info.pauseTime = -1
         return info
     }
 
-    override fun toString(): String {
-        return "startTime:" + startTime +" pauseTime:" + pauseTime + " data: " + data.toString()
+    /**
+     * 完全复制一份对象，所有属性一致
+     */
+    internal fun copy(): ActivityInfo<T> {
+        val info = ActivityInfo<T>()
+        info.data = data
+        info.startTime = startTime
+        info.pauseTime = pauseTime
+        return info
     }
 }

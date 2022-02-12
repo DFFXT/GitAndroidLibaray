@@ -1,9 +1,10 @@
-package com.iflytek.aistudyclient.english.lib.learn.report.ext
+package com.example.activitycollection.ext
 
 import android.app.Activity
+import android.content.Intent
 import com.example.activitycollection.base.ActivityInfo
 import com.example.activitycollection.base.Cloneable
-import com.orhanobut.logger.Logger
+import com.iflytek.aistudyclient.english.lib.learn.report.ext.log
 
 /**
  * @author feiqin
@@ -16,7 +17,7 @@ const val ACTIVITY_INFO_KEY = "_ActivityStackCollection_"
  * intent获取activity信息
  */
 fun <T : Cloneable> Activity.getActivityInfo(): ActivityInfo<T>? {
-    return intent?.getSerializableExtra(ACTIVITY_INFO_KEY) as? ActivityInfo<T>
+    return intent?.getActivityInfo()
 }
 
 /**
@@ -27,10 +28,24 @@ fun <T : Cloneable> Activity.getActivityInfoData(): T? {
 }
 
 /**
+ * 获取Intent中的页面信息
+ */
+fun <T : Cloneable> Intent.getActivityInfo(): ActivityInfo<T>? {
+    return getSerializableExtra(ACTIVITY_INFO_KEY) as? ActivityInfo<T>
+}
+
+/**
+ * 设置页面信息到Intent
+ */
+fun <T : Cloneable> Intent.setActivityInfo(info: ActivityInfo<T>?) {
+    putExtra(ACTIVITY_INFO_KEY, info)
+}
+
+/**
  * 设置activity信息到intent
  */
 fun <T : Cloneable> Activity.setActivityInfo(activityInfo: ActivityInfo<T>?) {
-    intent?.putExtra(ACTIVITY_INFO_KEY, activityInfo)
+    intent?.setActivityInfo(activityInfo)
 }
 
 /**
@@ -41,8 +56,9 @@ fun <T : Cloneable> Activity.setActivityInfoData(infoData: T?) {
     info?.let {
         info.data = infoData
         setActivityInfo(it)
-    } ?: Logger.w("ActivityExt", "保存 infoData 失败，无页面信息")
+    } ?: log("ActivityExt", "保存 infoData 失败，无页面信息")
 }
+
 /**
  * 移除intent信息
  */

@@ -50,4 +50,12 @@
             <enum name="cut" value="1"/>
         </attr>
     </declare-styleable>
+
+
+    <declare-styleable name="OverSizeView">
+        <attr name="osv_offsetStart" format="dimension|fraction"/>
+        <attr name="osv_offsetEnd" format="dimension|fraction"/>
+        <attr name="osv_offsetTop" format="dimension|fraction"/>
+        <attr name="osv_offsetBottom" format="dimension|fraction"/>
+    </declare-styleable>
 </resources>

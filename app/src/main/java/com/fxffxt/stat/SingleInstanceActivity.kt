@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.fxffxt.gitandroidlibaray.R
-import com.iflytek.aistudyclient.english.lib.learn.report.ext.removeActivityInfo
+import com.example.activitycollection.ext.removeActivityInfo
 
 /**
  * @author feiqin

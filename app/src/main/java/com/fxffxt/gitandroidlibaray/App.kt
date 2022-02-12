@@ -1,6 +1,8 @@
 package com.fxffxt.gitandroidlibaray
 
 import android.app.Application
+import android.content.Context
+import com.example.activitycollection.StackInstaller
 import com.example.activitycollection.base.ActivityInfo
 import com.example.activitycollection.base.ActivityStackCollection
 import com.example.activitycollection.bean.Module
@@ -11,13 +13,19 @@ import com.example.activitycollection.bean.Module
  * @description application
  */
 class App : Application() {
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        StackInstaller.install(
+            this,
+            object : ActivityStackCollection<Module>() {
+                override fun onPauseWithInfo(info: ActivityInfo<Module>) {
+                }
+            }
+        )
+    }
     override fun onCreate() {
         ctx = this
         super.onCreate()
-        registerActivityLifecycleCallbacks(object : ActivityStackCollection<Module>() {
-            override fun onPauseWithInfo(info: ActivityInfo<Module>) {
-            }
-        })
     }
     companion object {
         @JvmStatic
