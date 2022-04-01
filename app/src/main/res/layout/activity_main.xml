@@ -14,7 +14,6 @@
         android:textSize="20sp"
         android:text="inner类型"
         android:background="#990000"
-        android:textColor="@color/white"
         android:gravity="center"
         android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +26,6 @@
         android:textSize="20sp"
         android:text="outer类型"
         android:background="#990000"
-        android:textColor="@color/white"
         android:gravity="center"
 
         app:layout_constraintStart_toEndOf="@id/tv_inner"
@@ -40,10 +38,34 @@
         android:textSize="20sp"
         android:text="fragment"
         android:background="#990000"
-        android:textColor="@color/white"
         android:gravity="center"
         app:layout_constraintStart_toEndOf="@id/tv_outer"
         app:layout_constraintTop_toTopOf="@id/tv_inner"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+<!--    <com.fxffxt.ABC
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:alpha="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:bg="@color/black"/>-->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.fxffxt.ABC
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:alpha="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:bg="@color/black"/>
+        </FrameLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

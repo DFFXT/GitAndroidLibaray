@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GitAndroidLibaray">
 
-        <activity android:name="com.fxffxt.stat.DispatcherActivity">
+        <activity android:name=".MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

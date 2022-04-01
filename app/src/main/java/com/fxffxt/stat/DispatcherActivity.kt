@@ -20,6 +20,7 @@ class DispatcherActivity : BaseStatActivity() {
             SingleTaskActivity1.actionStart(this)
         }
         finish()
+
     }
 
     companion object {
